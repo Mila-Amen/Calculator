@@ -3,9 +3,9 @@
 import React from "react";
 import Calculator from "./components/Calculator";
 
-function App() {
+const  App = ()=> {
   return (
-    <div className='text-red'>
+    <div className='bg-[#141414] min-h-screen text-white flex items-center justify-center'>
       <Calculator />
     </div>
   );
