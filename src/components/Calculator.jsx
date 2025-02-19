@@ -1,40 +1,60 @@
-/* eslint-disable react/jsx-key */
-/* eslint-disable react/jsx-no-undef */
 /* eslint-disable no-unused-vars */
-import React from "react";
-import keys from "./Keys";
+// src/Calculator.jsx
+import { useState } from 'react';
+import './Calculator.css';
+
 
 const Calculator = () => {
-  const keys = [
-    "AC",
-    "C",
-    "%",
-    "/",
-    "7",
-    "8",
-    "9",
-    "*",
-    "4",
-    "5",
-    "6",
-    "-",
-    "1",
-    "2",
-    "3",
-    "+",
-    ".",
-    "0",
-    "EQUALS",
-  ];
+  const [input, setInput] = useState('');
+
+  const handleClick = (value) => {
+    setInput((prevInput) => prevInput + value);
+  };
+
+  const handleClear = () => {
+    setInput('');
+  };
+
+  const handleCalculate = () => {
+    try {
+      setInput(eval(input).toString());
+    } catch (error) {
+      setInput('Error');
+    }
+  };
+
   return (
-    <div className="min-w-[320px] bg-black flex flex-col gap-4 p-4 rounded-2xl">
-      <div className="overflow-x-auto bg-[#141414] min-h-[100px] flex items-end justify-end flex-col p-4 rounded-[10px]">
-        Result
+    <div className="calculator">
+      <div className="output">
+        <input
+          type="text"
+          value={input}
+          readOnly
+          placeholder="0"
+        />
       </div>
-      <div>
-        {keys.map((item, index) => (
-          <Keys label={item} key={index} />
-        ))}
+      <div className="buttons">
+        <button onClick={() => handleClick('7')}>7</button>
+        <button onClick={() => handleClick('8')}>8</button>
+        <button onClick={() => handleClick('9')}>9</button>
+        <button onClick={() => handleClick('/')}>/</button>
+
+        <button onClick={() => handleClick('4')}>4</button>
+        <button onClick={() => handleClick('5')}>5</button>
+        <button onClick={() => handleClick('6')}>6</button>
+        <button onClick={() => handleClick('*')}>*</button>
+
+        <button onClick={() => handleClick('1')}>1</button>
+        <button onClick={() => handleClick('2')}>2</button>
+        <button onClick={() => handleClick('3')}>3</button>
+        <button onClick={() => handleClick('-')}>-</button>
+
+        <button onClick={() => handleClick('0')}>0</button>
+        <button onClick={() => handleClick('.')}>.</button>
+        <button onClick={handleCalculate}>=</button>
+        <button onClick={() => handleClick('+')}>+</button>
+
+        <button className="clear" onClick={handleClear}>Clear</button>
       </div>
     </div>
   );

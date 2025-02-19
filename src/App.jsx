@@ -1,14 +1,12 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/no-unknown-property */
-import React from "react";
-import Calculator from "./components/Calculator";
+// src/App.jsx
+import Calculator from './components/Calculator.jsx';
 
-const  App = ()=> {
+const App = () => {
   return (
-    <div className='bg-[#141414] min-h-screen text-white flex items-center justify-center'>
+    <div className="App">
       <Calculator />
     </div>
   );
-}
+};
 
 export default App;
